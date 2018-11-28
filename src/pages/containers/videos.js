@@ -16,17 +16,17 @@ class Home extends Component {
   //   modalVisible: false,
   // }
   handleOpenModal = (id) => {
-    this.props.actions.openModal(id)
-    // this.setState({
-    //   modalVisible: true,
-    //   media
-    // })
+    this.props.actions.openModal(id)    
   }
-  handleCloseModal = (event) => {
-    // this.setState({
-    //   modalVisible: false,
-    // })
+  handleCloseModal = (event) => {    
     this.props.actions.closeModal()
+  }
+  componentDidMount() {
+    const searchUrlQuery = this.props.location.search
+    if (searchUrlQuery) {
+      const id = searchUrlQuery.split('=')[1]
+      this.handleOpenModal(id)
+    }
   }
   render() {
     return (
