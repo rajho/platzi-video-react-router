@@ -12,6 +12,7 @@ import Header from '../components/header'
 import Home from '../components/home';
 import Videos from '../containers/videos';
 import NotFound from '../components/not-found';
+import Video from './video';
 
 
 const logger_ = ({getState, dispatch }) => next => action => {
@@ -43,7 +44,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/videos" component={Videos} />          
-            <Redirect from="/v" to="/videos"/>
+            <Route exact path="/videos/:id" component={Video} />          
+            <Redirect exact from="/v" to="/videos"/>
+            <Redirect exact from="/v/:id" to="/videos/:id"/>
             <Route component={NotFound} />
           </Switch>
         </Fragment>
